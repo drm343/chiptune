@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chiptune 學習中</title>
+        <style type="text/css">
+header {
+    display: flex;
+    color: #c52705;
+    background-color: #38d0f1;
+    flex-direction: column;
+}
+div.song_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+h2.title:hover {
+    background-color: yellow;
+    cursor: pointer;
+    width: 30%;
+}
+div.song {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+div.hide {
+    display: none;
+}
+div.song h3 {
+    flex-grow: 2;
+}
+a.goto_github:hover {
+    color: #efe8e6;
+}
+        </style>
+        <script>
+            window.onload = function () {
+                var h2 = document.querySelectorAll("h2.title");
+                h2.forEach(function (item) {
+                    item.is_hide = false;
+
+                    item.onclick = function (e) {
+                        query = document.querySelectorAll("#" + e.target.parentNode.id + " div.song");
+                        if (item.is_hide) {
+                            query.forEach(function (x) {x.classList.remove("hide");})
+                            item.is_hide = false;
+                        }
+                        else {
+                            query.forEach(function (x) {x.classList.add("hide");})
+                            item.is_hide = true;
+                        }
+                    };
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h2>為了在開發的遊戲中使用音樂，而學習 chiptune。</h2>
+            <h2>這邊專門放學習過程時做的音樂，全部以 MIT 授權。</h2>
+            <h2>音樂使用 <a class="goto_github" href="https://www.beepbox.co">beepbox</a> 製作，可以從 <a class="goto_github" href="https://github.com/drm343/chiptune">github</a> 下載到 json 搭配 beepbox 做修改。</h2>
+        </header>
+        <div>
+        </div>
+        <div id="first" class="song_list">
+            <h2 class="title">第一次的 chiptune</h2>
+            <div class="song">
+                <h3>
+                    01-First-Song
+                </h3>
+                <audio controls>
+                    <source src="song/01-First-Song.flac" type="audio/flac">
+                </audio>
+            </div>
+            <div class="song">
+                <h3>
+                    02-hello
+                </h3>
+                <audio controls>
+                    <source src="song/02-hello.flac" type="audio/flac">
+                </audio>
+            </div>
+        </div>
+    </body>
+</html>
